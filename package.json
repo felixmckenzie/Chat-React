@@ -15,6 +15,7 @@
     "@heroicons/react": "^2.0.17",
     "clsx": "^1.2.1",
     "graphql": "^16.6.0",
+    "graphql-ws": "^5.12.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
