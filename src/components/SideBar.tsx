@@ -5,7 +5,6 @@ import { List } from './List'
 import { Avatar } from './Avartar'
 import {messages} from './dummyData'
 import { SideBarHeader } from './SideBarHeader'
-
 type MenuKey = 'profile' | 'contacts' | 'chats'
 
 
@@ -30,11 +29,6 @@ const SideBar = (): JSX.Element => {
     }
 
     const options = [
-        {
-            key: 'profile',
-            display: <Avatar width={16} height={16} alt="avatar" avatarUrl={""} />,
-            onClick: () => toggleMenu('profile'),
-        },
         {
             key: 'chats',
             display: <ChatBubbleBottomCenterIcon className="w-5 h-5" />,

@@ -1,5 +1,15 @@
 import { useEffect } from 'react'
 import  SideBar from './components/SideBar'
+import {
+  ClerkProvider,
+  SignedIn,
+  SignedOut,
+  UserButton,
+  useUser,
+  RedirectToSignIn,
+} from "@clerk/clerk-react";
+const clerk_pub_key = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+
 
 function App() {
 
@@ -24,11 +34,19 @@ const getPageZoom = () => {
     }, [])
   
   return (
-    <div id="mainApp" style={{ height: `${window.innerHeight}px` }}>
-      <main  className="h-screen w-screen  bg-gray-100 overflow-hidden" >
+    <ClerkProvider publishableKey={clerk_pub_key}>
+      <div id="mainApp" style={{ height: `${window.innerHeight}px` }}>
+      <SignedIn>
+        <main  className="h-screen w-screen  bg-gray-100 overflow-hidden" >
       <SideBar/>
       </main>
+      </SignedIn>
+       <SignedOut>
+        <RedirectToSignIn />
+      </SignedOut>
     </div>
+    </ClerkProvider>
+    
   )
 }
 
