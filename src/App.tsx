@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import  SideBar from './components/SideBar'
+import { Toaster } from 'react-hot-toast';
 import {
   SignedIn,
   SignedOut,
@@ -30,15 +31,17 @@ const getPageZoom = () => {
     }, [])
   
   return (
-      <div id="mainApp" style={{ height: `${window.innerHeight}px` }}>
+      <div className='h-screen w-screen' style={{ height: `${window.innerHeight}px` }}>
       <SignedIn>
-        <main  className="h-screen w-screen  bg-gray-100 overflow-hidden" >
-      <SideBar/>
-      </main>
+        <SideBar/>
+          <main  className="flex-1 relative bg-gray-100 overflow-hidden" >
+            
+        </main>
       </SignedIn>
        <SignedOut>
-        <RedirectToSignIn />
+          <RedirectToSignIn />
       </SignedOut>
+      <Toaster position='top-right' />
     </div> 
   )
 }
