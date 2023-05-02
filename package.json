@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.10",
+    "@clerk/clerk-react": "^4.15.3",
     "@heroicons/react": "^2.0.17",
     "clsx": "^1.2.1",
     "graphql": "^16.6.0",
