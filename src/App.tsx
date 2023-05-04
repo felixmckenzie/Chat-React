@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
-import  SideBar from './components/SideBar'
+import { Routes, Route } from 'react-router-dom';
+import { MessagePage } from './pages/MessagePage';
+import { RootLayout } from './pages/RootLayout';
 import { Toaster } from 'react-hot-toast';
 import {
   SignedIn,
@@ -33,9 +35,12 @@ const getPageZoom = () => {
   return (
       <div className='h-screen w-screen' style={{ height: `${window.innerHeight}px` }}>
       <SignedIn>
-        <SideBar/>
-          <main  className="flex-1 relative bg-gray-100 overflow-hidden" >
-            
+      <main  className="flex-1 relative bg-gray-100 overflow-hidden" >
+        <Routes>
+          <Route element={<RootLayout/>}>
+            <Route  path="/messages" element={<MessagePage/>}/>
+          </Route>
+        </Routes>
         </main>
       </SignedIn>
        <SignedOut>
