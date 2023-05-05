@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { MessagePage } from './pages/MessagePage';
 import { RootLayout } from './pages/RootLayout';
 import { Toaster } from 'react-hot-toast';
@@ -38,6 +38,7 @@ const getPageZoom = () => {
       <main  className="flex-1 relative bg-gray-100 overflow-hidden" >
         <Routes>
           <Route element={<RootLayout/>}>
+            <Route path="/" element={<Navigate replace to="/messages"/>}/>
             <Route  path="/messages" element={<MessagePage/>}/>
           </Route>
         </Routes>
