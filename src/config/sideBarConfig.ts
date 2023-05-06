@@ -21,5 +21,11 @@ export const SideBarConfig = {
             href: '/friends/pending',
             disabled: false,
         },
+        {
+            id: 4,
+            title: 'Add Friend',
+            href: '/friends/add',
+            disabled: false,
+        },
     ],
 }
