@@ -25,7 +25,7 @@ export const Navbar = ({ items, children, className }: NavProps) => {
                     ))}
                 </div>
             )}
-            <button className="flex items-center text-headline-text space-x-2 md:hidden" onClick={() => setShowMobileMenu(!showMobileMenu)}>
+            <button className="flex items-center space-x-2 md:hidden" onClick={() => setShowMobileMenu(!showMobileMenu)}>
                 {showMobileMenu ? <XMarkIcon className="h-4 w-4" /> : <Bars3Icon className="h-4 w-4" />}
                 <span className="font-bold">Menu</span>
             </button>

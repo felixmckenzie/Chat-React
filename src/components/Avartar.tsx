@@ -20,7 +20,7 @@ export const Avatar = ({ avatarUrl, alt, width, height }: AvatarProps) => {
             ) : (
                 <div
                     className={cn(
-                        'flex flex-col items-center justify-center text-center bg-bg-light rounded-full text-body-text-light text-xs font-bold',
+                        'flex flex-col items-center justify-center text-center bg-bg-light rounded-full text-xs font-bold',
                         widthClass,
                         heightClass
                     )}

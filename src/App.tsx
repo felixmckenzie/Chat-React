@@ -5,6 +5,7 @@ import { AddFriendPage } from './pages/friends/AddFriendPage';
 import { FriendsPageLayout } from './pages/friends/FriendsPageLayout';
 import { RootLayout } from './pages/RootLayout';
 import { Toaster } from 'react-hot-toast';
+import { useTheme } from './providers/themeProvider';
 import {
   SignedIn,
   SignedOut,
@@ -13,6 +14,8 @@ import {
 
 
 function App() {
+
+  const {theme} = useTheme()
 
 const getPageZoom = () => {
         const zoomVal = window.localStorage.getItem('zoom')
@@ -35,9 +38,9 @@ const getPageZoom = () => {
     }, [])
   
   return (
-      <div className='h-screen w-screen' style={{ height: `${window.innerHeight}px` }}>
+      <div className={`h-screen w-screen  ${theme === 'light' ? 'bg-light text-dark' : 'bg-dark text-light'}`} style={{ height: `${window.innerHeight}px` }}>
       <SignedIn>
-      <main  className="flex-1 relative bg-gray-100 overflow-hidden" >
+      <main  className="flex-1 relative overflow-hidden" >
         <Routes>
           <Route element={<RootLayout/>}>
             <Route path="/" element={<Navigate replace to="/messages"/>}/>
