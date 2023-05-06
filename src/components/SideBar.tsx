@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import { MessageItem } from './MessageItem'
+import { SideBarLink } from './SideBarLink';
 import { List } from './List'
 import { SideBarHeader } from './SideBarHeader'
-
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
 type ItemType = {
   id: string | number;
   [key: string]: any;
@@ -32,7 +33,7 @@ const renderItem = (type: SideBarProps['type'], item: ItemType) => {
 
   if(type === 'friends'){ 
     return (
-    <li className='flex w-full items-center rounded-md p-2 hover:underline'><Link to={item.href}>{item.title}</Link></li>
+    <SideBarLink href={item.href} title={item.title} />
     )
     
     }
