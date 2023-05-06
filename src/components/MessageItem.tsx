@@ -2,7 +2,7 @@ import { FormatDate } from '../utils'
 import { Avatar } from './Avartar'
 
 
-export const MesssageItem = ({ title, text, date }: { title: string; text: string; date?: string }) => {
+export const MessageItem = ({ title, text, date }: { title: string; text: string; date?: string }) => {
     return (
         <div className="flex w-full p-2 text-body-text-light">
             <div className="flex flex-shrink items-center">
