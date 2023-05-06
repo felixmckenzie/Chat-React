@@ -8,13 +8,8 @@ export const NavConfig = {
             disabled: false,
         },
         {
-            title: 'Contacts',
-            href: '/contacts',
-            disabled: false,
-        },
-        {
-            title: 'Friend Requests',
-            href: '/friend-requests',
+            title: 'Friends',
+            href: '/friends',
             disabled: false,
         },
     ],

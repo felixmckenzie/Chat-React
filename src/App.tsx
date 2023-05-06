@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { MessagePage } from './pages/MessagePage';
+import { MessagePage } from './pages/messages/MessagePage';
+import { FriendsPage } from './pages/friends/FriendsPage';
 import { RootLayout } from './pages/RootLayout';
 import { Toaster } from 'react-hot-toast';
 import {
@@ -40,6 +41,7 @@ const getPageZoom = () => {
           <Route element={<RootLayout/>}>
             <Route path="/" element={<Navigate replace to="/messages"/>}/>
             <Route  path="/messages" element={<MessagePage/>}/>
+            <Route path="/friends" element={<FriendsPage/>} />
           </Route>
         </Routes>
         </main>
