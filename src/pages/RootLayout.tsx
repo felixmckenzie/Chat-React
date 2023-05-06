@@ -4,9 +4,10 @@ import { Navbar } from '../components/NavBar';
 import { Tooltip } from '../components/ToolTip';
 import { NavConfig } from '../config/MainNavConfig';
 import { UserButton } from '@clerk/clerk-react';
-import { InboxIcon } from '@heroicons/react/24/outline'
-
+import { InboxIcon, SunIcon, MoonIcon } from '@heroicons/react/24/outline'
+import { useTheme } from "../providers/themeProvider";
 export const RootLayout: FC = () => {
+const {theme, toggleTheme} = useTheme()
 
     return (
         <>
@@ -16,6 +17,9 @@ export const RootLayout: FC = () => {
               <Tooltip content="Inbox">
                                 <InboxIcon className="w-5 h-5 text-headline-text" />
                         </Tooltip>
+                <button onClick={toggleTheme}>{
+                    theme === 'light' ? <SunIcon className="w-5 h-5"/> : <MoonIcon className="w-5 h-5"/>}
+                </button>
                  <UserButton/>      
            </nav>
          </div>
