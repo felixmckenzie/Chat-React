@@ -3,7 +3,7 @@ import { MessageItem } from './MessageItem'
 import { SideBarLink } from './SideBarLink';
 import { List } from './List'
 import { SideBarHeader } from './SideBarHeader'
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
+
 type ItemType = {
   id: string | number;
   [key: string]: any;
