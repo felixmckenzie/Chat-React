@@ -7,10 +7,14 @@ export default {
         clerkId: $clerkId
         contactUserEmail: $contactUserEmail
       ) {
+        id
         receiver {
+          id
+          clerkId
           username
           email
         }
+        status
       }
     }
   `,
