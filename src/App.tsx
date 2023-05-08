@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { MessagePage } from './pages/messages/MessagePage';
 import { AddFriendPage } from './pages/friends/AddFriendPage';
 import { FriendsPageLayout } from './pages/friends/FriendsPageLayout';
+import { FriendRequestPage } from './pages/friends/FriendRequests';
 import { RootLayout } from './pages/RootLayout';
 import { Toaster } from 'react-hot-toast';
 import { useTheme } from './providers/themeProvider';
@@ -40,13 +41,14 @@ const getPageZoom = () => {
   return (
       <div className={`h-screen w-screen  ${theme === 'light' ? 'bg-light text-dark' : 'bg-dark text-light'}`} style={{ height: `${window.innerHeight}px` }}>
       <SignedIn>
-      <main  className="flex-1 relative overflow-hidden" >
+      <main  className="flex-1 h-full w-full relative overflow-hidden" >
         <Routes>
           <Route element={<RootLayout/>}>
             <Route path="/" element={<Navigate replace to="/messages"/>}/>
             <Route  path="/messages" element={<MessagePage/>}/>
             <Route path="/friends" element={<FriendsPageLayout/>} >
               <Route path="add" element={<AddFriendPage/>}/>
+              <Route path="pending" element={<FriendRequestPage/>}/>
             </Route>
           </Route>
         </Routes>
