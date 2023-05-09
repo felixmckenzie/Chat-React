@@ -15,6 +15,7 @@ export default {
           avatar
         }
         receivedRequests {
+          id
           status
           sender {
             clerkId
