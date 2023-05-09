@@ -18,6 +18,19 @@ export default {
       }
     }
   `,
+  RESPOND_TO_REQUEST: gql`
+    mutation RespondToFriendRequest(
+      $requestId: Int!
+      $status: FriendRequestStatus!
+    ) {
+      respondToFriendRequest(requestId: $requestId, status: $status) {
+        clerkId
+        email
+        username
+        avatar
+      }
+    }
+  `,
   FRIEND_REQUESTS_RECEIVED: gql`
     query FriendRequestsReceivedByUser($clerkId: String!) {
       friendRequestsReceivedByUser(clerkId: $clerkId) {
