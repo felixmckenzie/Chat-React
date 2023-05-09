@@ -41,7 +41,7 @@ const getPageZoom = () => {
   return (
       <div className={`h-screen w-screen  ${theme === 'light' ? 'bg-light text-dark' : 'bg-dark text-light'}`} style={{ height: `${window.innerHeight}px` }}>
       <SignedIn>
-      <main  className="flex-1 h-full w-full relative overflow-hidden" >
+      <main  className="flex-1 h-screen w-full relative overflow-hidden" >
         <Routes>
           <Route element={<RootLayout/>}>
             <Route path="/" element={<Navigate replace to="/messages"/>}/>

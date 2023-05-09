@@ -6,6 +6,7 @@ import { NavConfig } from '../config/MainNavConfig';
 import { UserButton } from '@clerk/clerk-react';
 import { InboxIcon, SunIcon, MoonIcon } from '@heroicons/react/24/outline'
 import { useTheme } from "../providers/themeProvider";
+
 export const RootLayout: FC = () => {
 const {theme, toggleTheme} = useTheme()
 
