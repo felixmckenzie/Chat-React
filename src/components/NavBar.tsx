@@ -9,6 +9,7 @@ export const Navbar = ({ items, children, className }: NavProps) => {
 
     return (
         <nav className="flex gap-6 md:gap-10">
+            <div className='font-bold bg-highlight p-1 rounded'>Dev Chat</div>
             {items?.length && (
                 <div className="hidden gap-6 md:flex">
                     {items?.map((item, index) => (
