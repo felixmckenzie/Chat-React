@@ -6,7 +6,7 @@ export const FriendsPageLayout = () => {
 
     return(
         <div className='flex w-full h-full'>
-            <SideBar items={SideBarConfig.friendPageNav} type='friends' heading='Friends' />
+            <SideBar items={SideBarConfig.friendPageNav} type='links' heading='Friends' />
             <Outlet/>
         </div>
     )
