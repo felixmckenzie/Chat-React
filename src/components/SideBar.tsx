@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { MessageItem } from './MessageItem'
+import { DetailCard } from './DetailCard'
 import { SideBarLink } from './SideBarLink';
 import { List } from './List'
 import { SideBarHeader } from './SideBarHeader'
@@ -11,7 +11,7 @@ type ItemType = {
 
 type SideBarProps = {
   items: ItemType[];
-  type: 'messages' | 'friends';
+  type: 'messages' | 'friends' | 'links';
   heading: string;
 };
 
@@ -20,7 +20,7 @@ const renderItem = (type: SideBarProps['type'], item: ItemType) => {
   if (type === 'messages') {
     return (
         <Link to={'/'}>
-         <MessageItem
+         <DetailCard
         key={item.id}
         title={item.sender}
         text={item.text}
@@ -31,7 +31,17 @@ const renderItem = (type: SideBarProps['type'], item: ItemType) => {
     );
   }
 
-  if(type === 'friends'){ 
+  if(type === 'friends'){
+   return(
+    <DetailCard
+      title={item.username}
+      text="I'm on Dev Chat"
+      avatar={item.avatar}
+    />
+   ) 
+  }
+
+  if(type === 'links'){ 
     return (
     <SideBarLink href={item.href} title={item.title} />
     )
@@ -39,10 +49,6 @@ const renderItem = (type: SideBarProps['type'], item: ItemType) => {
     }
     return null;
   }
-
-
-
-
 
 const SideBar = ({ items, type, heading }: SideBarProps): JSX.Element => {
 
