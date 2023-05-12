@@ -1,19 +1,11 @@
 import { gql } from "@apollo/client";
 
 export default {
-  GET_USER: gql`
+  GET_USER_REQUESTS: gql`
     query GetUser($clerkId: String!) {
       getUser(clerkId: $clerkId) {
         clerkId
-        username
         email
-        avatar
-        friends {
-          clerkId
-          username
-          email
-          avatar
-        }
         receivedRequests {
           id
           status
@@ -23,6 +15,20 @@ export default {
             email
             avatar
           }
+        }
+      }
+    }
+  `,
+  GET_USER_FRIENDS: gql`
+    query GetUser($clerkId: String!) {
+      getUser(clerkId: $clerkId) {
+        clerkId
+        email
+        friends {
+          clerkId
+          username
+          email
+          avatar
         }
       }
     }
