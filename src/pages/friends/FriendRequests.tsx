@@ -11,10 +11,9 @@ export function FriendRequestPage() {
   const { user } = useUser();
   const [friendRequests, setFriendRequests] = useState([]);
 
-  const { loading, error, data } = useQuery(queries.GET_USER, {
+  const { loading, error, data } = useQuery(queries.GET_USER_REQUESTS, {
     variables: { clerkId: user?.id },
     onCompleted: (data) => {
-      console.log(data.getUser)
       const requestsReceived = data?.getUser?.receivedRequests;
       setFriendRequests(requestsReceived);
     },
