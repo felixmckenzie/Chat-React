@@ -4,6 +4,7 @@ import { MessagePage } from './pages/messages/MessagePage';
 import { AddFriendPage } from './pages/friends/AddFriendPage';
 import { FriendsPageLayout } from './pages/friends/FriendsPageLayout';
 import { FriendRequestPage } from './pages/friends/FriendRequests';
+import { AllFriendsPage } from './pages/friends/AllFriends';
 import { RootLayout } from './pages/RootLayout';
 import { Toaster } from 'react-hot-toast';
 import { useTheme } from './providers/themeProvider';
@@ -50,6 +51,7 @@ const getPageZoom = () => {
               <Route path="add" element={<AddFriendPage/>}/>
               <Route path="pending" element={<FriendRequestPage/>}/>
             </Route>
+            <Route path="/friends/all" element={<AllFriendsPage/>} />
           </Route>
         </Routes>
         </main>
