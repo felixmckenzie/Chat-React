@@ -10,15 +10,16 @@ import queries from '../../queries'
  
 export function NewChatPage () {
 
-      const [messages, setMessages] = useState([])
-      const [currentChatId, setCurrentChatId] = useState(null);
+      const [messages, setMessages] = useState<Message[]>([])
+      const [currentChatId, setCurrentChatId] = useState<string | null>(null);
       const {user} = useUser()
+      const userClerkId = user?.id
       const {state} = useLocation()
       const {contactId, username} = state
 
 
       const {loading, error, data: chatData, subscribeToMore} = useQuery(queries.GET_CHAT, {
-        variables: {userIds: [user?.id, contactId]},
+        variables: {userIds: [userClerkId, contactId]},
         onCompleted: (data) => {
             if(data?.getChatBetweenUsers){
                 setCurrentChatId(data.getChatBetweenUsers?.id)
@@ -34,21 +35,19 @@ export function NewChatPage () {
       
        const { handleSubmit, register, reset } = useForm({
         defaultValues: {
-            message: '',
+            text: '',
         },
     })
 
-      const sendMessage = async (data) => {
+      const sendMessage = async (data: CreateMessageInput) => {
         let chatId = currentChatId
         if(!chatId){
-            const {data: chatData} = await createChat({variables:{ input: {name: username, userIds: [user.id, contactId]}}})
+            const {data: chatData} = await createChat({variables:{ input: {name: username, userIds: [userClerkId, contactId]}}})
             chatId = chatData?.createChat?.id
             setCurrentChatId(chatData?.createChat?.id)
         }
-       const{data: messageData} = await createMessage({variables: {text: data.message, senderId: user.id, chatId: chatId}})
-       if(messageData){
+       const{data: messageData} = await createMessage({variables: {text: data.text, senderId: userClerkId, chatId: chatId}})
         reset()
-       }
       }
 
       const subscribeToNewMessages = () => {
@@ -84,7 +83,7 @@ export function NewChatPage () {
     return (
         <div className="flex flex-col h-full w-full">
             <div className=" flex-grow overflow-auto p-2">
-                <DialoguePane messages={messages} user={user}/>
+                <DialoguePane messages={messages} userClerkId={userClerkId} loading={loading}/>
             </div>
              <form className="sticky bottom-0 bg-slate-200 w-full p-4" onSubmit={handleSubmit(sendMessage)}>
                 <Input label="Send Message" name="message" placeholder="message" register={register}>
