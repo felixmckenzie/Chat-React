@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { MessagePage } from './pages/messages/MessagePage';
+import { ChatLinksLayout } from './pages/chats/ChatLinks';
 import { AddFriendPage } from './pages/friends/AddFriendPage';
-import { FriendsPageLayout } from './pages/friends/FriendsPageLayout';
+import { NewChatPage } from './pages/chats/ChatPage';
+import { ActionLinksLayout } from './pages/friends/ActionLinks';
 import { FriendRequestPage } from './pages/friends/FriendRequests';
-import { AllFriendsPage } from './pages/friends/AllFriends';
+import { ContactLinksLayout } from './pages/friends/ContactLinks';
 import { RootLayout } from './pages/RootLayout';
 import { Toaster } from 'react-hot-toast';
 import { useTheme } from './providers/themeProvider';
@@ -40,18 +41,27 @@ const getPageZoom = () => {
     }, [])
   
   return (
-      <div className={`h-screen w-screen  ${theme === 'light' ? 'bg-light text-dark' : 'bg-dark text-light'}`} style={{ height: `${window.innerHeight}px` }}>
+      <div id='mainApp' className={`flex h-screen w-screen overflow-hidden   ${theme === 'light' ? 'bg-light text-dark' : 'bg-dark text-light'}`} style={{ height: `${window.innerHeight}px` }}>
       <SignedIn>
-      <main  className="flex-1 h-screen w-full relative overflow-hidden" >
+      <main className="flex h-full w-full relative z-0 overflow-hidden">
         <Routes>
           <Route element={<RootLayout/>}>
+           
             <Route path="/" element={<Navigate replace to="/messages"/>}/>
-            <Route  path="/messages" element={<MessagePage/>}/>
-            <Route path="/friends" element={<FriendsPageLayout/>} >
+            
+            <Route  path="/messages" element={<ChatLinksLayout/>} >
+              <Route path=":id" element={<></>} />
+              </Route>
+            
+            <Route path="/friends" element={<ActionLinksLayout/>} >
               <Route path="add" element={<AddFriendPage/>}/>
               <Route path="pending" element={<FriendRequestPage/>}/>
             </Route>
-            <Route path="/friends/all" element={<AllFriendsPage/>} />
+
+            <Route path="/friends/all" element={<ContactLinksLayout/>} >
+              <Route path="new-message" element={<NewChatPage/>} />
+            </Route>
+
           </Route>
         </Routes>
         </main>

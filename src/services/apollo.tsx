@@ -14,7 +14,7 @@ export const errorLink = onError(({ graphQLErrors, networkError }) => {
 
  const wsLink = new GraphQLWsLink(
               createClient({
-                  url: import.meta.env.VITE_WS_ENDPOINT || 'ws://localhost:4000/graphql',
+                  url: import.meta.env.VITE_WS_ENDPOINT,
               })
           )
        

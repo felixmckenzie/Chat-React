@@ -33,17 +33,20 @@ const renderItem = (type: SideBarProps['type'], item: ItemType) => {
 
   if(type === 'friends'){
    return(
+    <Link to={'new-message'} state={{contactId: item.clerkId, username: item.username}}>
     <DetailCard
+      key={item.id}
       title={item.username}
       text="I'm on Dev Chat"
       avatar={item.avatar}
     />
+    </Link>
    ) 
   }
 
   if(type === 'links'){ 
     return (
-    <SideBarLink href={item.href} title={item.title} />
+    <SideBarLink key={item.id} href={item.href} title={item.title} />
     )
     
     }
@@ -54,14 +57,14 @@ const SideBar = ({ items, type, heading }: SideBarProps): JSX.Element => {
 
 
     return (
-       <div className="hidden md:flex flex-col h-screen w-4/12 overflow-hidden border-r border-x-slate-900 divide-y">
-        <SideBarHeader heading={heading} />
+       <div className="hidden md:flex md:flex-shrink-0 flex-col w-4/12 border-r ">
+          <SideBarHeader heading={heading} />
                 <List>
                     <div>
                         {items.map((item) => renderItem(type, item))}
                     </div>
               </List>
-       </div>
+              </div>
     )
 }
 

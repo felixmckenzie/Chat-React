@@ -11,8 +11,8 @@ export const RootLayout: FC = () => {
 const {theme, toggleTheme} = useTheme()
 
     return (
-        <>
-        <div className="flex h-16 justify-between items-center border-b border-b-slate-900 px-4">
+        <div className="flex-col w-full h-full">
+        <div className="flex h-16 w-full justify-between items-center border-b border-b-slate-900 px-4">
             <Navbar items={NavConfig.mainNav} />
              <nav className="flex gap-6 items-center">
               <Tooltip content="Inbox">
@@ -24,8 +24,7 @@ const {theme, toggleTheme} = useTheme()
                  <UserButton/>      
            </nav>
          </div>
-         <Outlet/>
-        </>
-        
+             <Outlet/>
+        </div>
     )
 }
